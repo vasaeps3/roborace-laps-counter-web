@@ -1,0 +1,19 @@
+@import 'variables';
+@import "~antd/dist/antd.css";
+
+.ant-layout-header {
+  box-shadow: 0 2px 8px #f0f1f2;
+  background: #fff;
+  z-index: 1;
+  .logo {
+    max-height: 100%;
+  }
+}
+
+.layout {
+  min-height: 100vh;
+}
+
+.h100 {
+  height: 100%;
+}
