@@ -36,36 +36,12 @@ const onMessage = (message: SocketMessage, dispatch: Dispatch) => {
       setRaceTime(message.time, dispatch);
       break;
     case MessageType.LAP:
-      setRobot(message, dispatch);
+      const { type, ...robot } = message;
+      setRobot(robot, dispatch);
       break;
-
     default:
       break;
   }
-
-  // const test = {
-  //   "type": "LAP",
-  //   "serial": 101,
-  //   "num": 2,
-  //   "laps": 0,
-  //   "time": 0,
-  //   "place": 2
-  // }
-  //   [    UI] Message received = [{"type":"STATE","state":"READY"}]
-  // [ROBOT1] Opening websocket userSession = [org.apache.tomcat.websocket.WsSession@16d41725]
-  // [ROBOT1] Message received = [{"type":"STATE","state":"READY"}]
-  // [ROBOT1] Send message = [{"type":"ROBOT_INIT","serial":100}]
-  // [    UI] Message received = [{"type":"LAP","serial":100,"num":1,"laps":0,"time":0,"place":1}]
-  // [ROBOT1] Message received = [{"type":"LAP","serial":100,"num":1,"laps":0,"time":0,"place":1}]
-  // [ROBOT2] Opening websocket userSession = [org.apache.tomcat.websocket.WsSession@721bf7ad]
-  // [ROBOT2] Message received = [{"type":"STATE","state":"READY"}]
-  // [ROBOT2] Send message = [{"type":"ROBOT_INIT","serial":101}]
-  // [    UI] Message received = [{"type":"LAP","serial":101,"num":2,"laps":0,"time":0,"place":2}]
-  // [ROBOT2] Message received = [{"type":"LAP","serial":101,"num":2,"laps":0,"time":0,"place":2}]
-  // [ROBOT1] Message received = [{"type":"LAP","serial":101,"num":2,"laps":0,"time":0,"place":2}]
-  // [    UI] Send message = [{"type":"LAPS"}]
-  // [    UI] Message received = [{"type":"LAP","serial":100,"num":1,"laps":0,"time":0,"place":1}]
-  // [    UI] Message received = [{"type":"LAP","serial":101,"num":2,"laps":0,"time":0,"place":2}]
 }
 
 const onError = (dispatch: Dispatch) => {
