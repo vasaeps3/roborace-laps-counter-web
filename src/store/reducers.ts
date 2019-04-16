@@ -2,8 +2,8 @@ import { combineReducers } from "redux";
 import { reducer as formReducer } from 'redux-form';
 
 import initDataReducer from "./initData/reducers";
-import raceReducer from "./race/raceReducer";
-import socketReducer from "./socket/socketRedicer";
+import socketReducer from "./socket/reducer";
+import raceReducer from "./race/reducer";
 
 
 export default combineReducers({

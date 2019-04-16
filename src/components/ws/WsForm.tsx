@@ -3,10 +3,15 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
-import { EnumSocketStatus } from '../../utils/enums/socketEnums';
+import { SocketStatus } from '../../store/socket/interfaces';
 
 
 class WsFormWrap extends Component<any, any> {
+
+  get isDisabled() {
+    return [SocketStatus.Connected, SocketStatus.Connecting].includes(this.props.socketState.status);
+  }
+
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -23,7 +28,7 @@ class WsFormWrap extends Component<any, any> {
                     component="input"
                     type="text"
                     className="ant-input"
-                    disabled={this.props.socketState.status === EnumSocketStatus.Connected || this.props.socketState.status === EnumSocketStatus.Connecting}
+                    disabled={this.isDisabled}
                   />
                 </span>
               </span>

@@ -4,51 +4,58 @@ import { connect } from 'react-redux';
 
 import WsContainer from '../ws/WsContainer';
 import { submitWS } from '../../store/initData/actions';
-import { EnumSocketStatus } from '../../utils/enums/socketEnums';
-import { disconnectSocket, connectSocket } from '../../store/socket/socketActions';
-import { ISocketState } from '../../utils/models/socketModels';
+import { disconnectSocket, connectSocket } from '../../store/socket/actions';
+import { ISocketState, SocketStatus } from '../../store/socket/interfaces';
 
 
-export interface IAppProps {
+export interface IAppProps extends IStateToProps, IDispatchToProps {
   visible: boolean;
   toggleModal: (visible: boolean) => void;
-  submitWS: () => void;
-  socketState: ISocketState;
-  connectSocket: (wsURL: string) => void;
-  disconnectSocket: () => void;
 }
 
 export interface IAppState { }
 
 class HeaderModal extends React.Component<IAppProps, IAppState> {
-  private connectFromButton = () => {
+
+  private onConnectButtonClick = () => {
     this.props.submitWS();
   }
-  private disconnectButton = () => {
+
+  private onDisconnectButtonClick = () => {
     this.props.disconnectSocket();
   }
+
   private closeModal = () => {
     this.props.toggleModal(false);
   }
+
   private connectFromSubmit = (wsURL: string) => {
     this.props.connectSocket(wsURL);
   }
 
-  get loading() {
-    return this.props.socketState.status === EnumSocketStatus.Connecting;
+  get isLoading() {
+    return this.props.status === SocketStatus.Connecting;
+  }
+
+  get disconnectButton() {
+    return <Button key="submit" type="primary" loading={this.isLoading} onClick={() => this.onDisconnectButtonClick()}>Disconnect</Button>;
+  }
+
+  get connectButton() {
+    return <Button key="submit" type="primary" loading={this.isLoading} onClick={() => this.onConnectButtonClick()}>Connect</Button>
   }
 
   public render() {
     return (
       <Modal
-        title="Basic Modal"
+        title="Connecting"
         visible={this.props.visible}
         onCancel={this.closeModal}
         footer={[
           <Button key="back" onClick={this.closeModal}>Close</Button>,
-          this.props.socketState.status === EnumSocketStatus.Connected
-            ? <Button key="submit" type="primary" loading={this.loading} onClick={() => this.disconnectButton()}>Disconnect</Button>
-            : <Button key="submit" type="primary" loading={this.loading} onClick={() => this.connectFromButton()}>Connect</Button>
+          this.props.status === SocketStatus.Connected
+            ? this.disconnectButton
+            : this.connectButton
         ]}
       >
         <WsContainer connectFromSubmit={this.connectFromSubmit} />
@@ -57,8 +64,20 @@ class HeaderModal extends React.Component<IAppProps, IAppState> {
   }
 }
 
-const mapStateToProps = (state: any) => ({ socketState: state.socketState })
-const mapDispatchToProps = { connectSocket, disconnectSocket, submitWS };
+interface IStateToProps extends ISocketState { }
+
+interface IMapStateToProps {
+  (state: any): IStateToProps;
+}
+
+const mapStateToProps: IMapStateToProps = (state: any) => ({ ...state.socketState });
+
+interface IDispatchToProps {
+  connectSocket: (wsURL: string) => void;
+  disconnectSocket: () => void;
+  submitWS: () => void;
+}
+const mapDispatchToProps: IDispatchToProps = { connectSocket, disconnectSocket, submitWS };
 
 export default connect(
   mapStateToProps,
