@@ -17,7 +17,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
         <Header />
         <Layout.Content style={{ padding: '0 50px' }}>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <WsContainer />
+            {/* <WsContainer /> */}
           </div>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: 'center' }}>

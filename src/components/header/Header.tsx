@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { Layout, Button } from 'antd';
+import { connect } from 'react-redux';
+import { submit } from 'redux-form';
 
 import Logo from '../logo/Logo';
-import HeaderModal from '../headerModal/HeaderMadal';
+import HeaderModal from './HeaderModal';
 
 
-export interface IAppProps { }
-export interface IAppState {
+interface IAppProps { }
+interface IAppState {
   visible: boolean;
 }
 
 class Header extends React.Component<IAppProps, IAppState> {
+
   state = {
     visible: false,
   }
@@ -30,13 +33,13 @@ class Header extends React.Component<IAppProps, IAppState> {
             icon="setting"
             shape="circle"
             onClick={() => this.onModalToggle(true)}></Button>
-          <HeaderModal visible={this.state.visible} toggleModal={this.onModalToggle} ></HeaderModal>
-          {/*  */}
+          <HeaderModal
+            visible={this.state.visible}
+            toggleModal={this.onModalToggle}></HeaderModal>
         </div>
       </Layout.Header>
     );
   }
 }
-
 
 export default Header;
