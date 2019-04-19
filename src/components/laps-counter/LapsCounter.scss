@@ -1,0 +1,56 @@
+$table-header: #1976D2;
+$table-header-border: #1565C0;
+$table-border: #d9d9d9;
+.laps-counter {
+  //   .race-table {
+
+  //     &-row {}
+  //   }
+}
+.card-robot {
+  margin: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.race-table-body,
+.race-table-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  .race-table-row {
+    width: 100%;
+    display: flex;
+    .race-table-cell {
+      box-sizing: border-box;
+      flex-grow: 1;
+      padding: 0.8em 1.2em;
+      &.num {
+        width: 20%;
+        max-width: 150px;
+        background: green;
+      }
+      &.serial {
+        width: 20%;
+        max-width: 150px;
+        background: yellow;
+      }
+      &.place {
+        width: 20%;
+        background: red;
+      }
+      &.laps {
+        width: 20%;
+        max-width: 150px;
+        background: blue;
+      }
+      &.time {
+        width: 20%;
+        max-width: 150px;
+        background: blueviolet;
+      }
+    }
+  }
+}

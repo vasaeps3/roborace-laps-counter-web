@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 
 import Header from '../../components/header/Header';
-import WsContainer from '../../components/ws/WsContainer';
+import LapsCounter from '../../components/laps-counter/LapsCounter';
 
 
 export interface IHomeProps { }
@@ -16,8 +16,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       <Layout className="layout">
         <Header />
         <Layout.Content style={{ padding: '0 50px' }}>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            {/* <WsContainer /> */}
+          <div className="main-container">
+            <LapsCounter />
           </div>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: 'center' }}>

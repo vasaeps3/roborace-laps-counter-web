@@ -9,6 +9,13 @@
     max-height: 100%;
   }
 }
+.ant-layout-content {
+  .main-container {
+    height: calc(100vh - 64px - 69px);
+    padding: 20px;
+    background: #ffffff;
+  }
+}
 
 .layout {
   min-height: 100vh;
