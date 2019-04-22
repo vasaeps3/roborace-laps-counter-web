@@ -1,55 +1,67 @@
-$table-header: #1976D2;
-$table-header-border: #1565C0;
-$table-border: #d9d9d9;
-.laps-counter {
-  //   .race-table {
-
-  //     &-row {}
-  //   }
-}
-.card-robot {
-  margin: 10px;
-  border: 1px solid #eeeeee;
-  border-radius: 10px;
-  font-size: 20px;
-}
-.race-table-body,
-.race-table-header {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 3em 0;
-  padding: 0;
+$border: 1px solid #eeeeee;
+.race-table {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-  .race-table-row {
-    width: 100%;
+  border-radius: 10px;
+  border: $border;
+  .race-table-body,
+  .race-table-header {
     display: flex;
-    .race-table-cell {
-      box-sizing: border-box;
-      flex-grow: 1;
-      padding: 0.8em 1.2em;
-      &.num {
-        width: 20%;
-        max-width: 150px;
-        background: green;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    .race-table-row {
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      border-bottom: $border;
+      .race-table-cell {
+        box-sizing: border-box;
+        flex-grow: 1;
+        padding: 0.8rem 1.2rem;
+        border-right: $border;
+        &:last-child {
+          border-right: none;
+        }
+        &.num {
+          width: 20%;
+          max-width: 150px;
+          background: green;
+        }
+        &.serial {
+          width: 360px;
+          min-width: 360px;
+        }
+        &.place {
+          min-width: 110px;
+          width: 120px;
+          max-width: 120px;
+        }
+        &.laps {
+          min-width: 50px;
+          width: 100px;
+          max-width: 100px;
+        }
+        &.time {
+          width: 20%;
+          max-width: 300px;
+          min-width: 230px;
+        }
       }
-      &.serial {
-        width: 20%;
-        max-width: 150px;
-        background: yellow;
+    }
+  }
+  .race-table-header {
+    .race-table-row {
+      .race-table-cell {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
       }
-      &.place {
-        width: 20%;
-        background: red;
-      }
-      &.laps {
-        width: 20%;
-        max-width: 150px;
-        background: blue;
-      }
-      &.time {
-        width: 20%;
-        max-width: 150px;
-        background: blueviolet;
+    }
+  }
+  .race-table-body {
+    .race-table-row {
+      &:last-child {
+        border-bottom: none;
       }
     }
   }

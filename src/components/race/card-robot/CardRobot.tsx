@@ -2,6 +2,10 @@ import * as React from 'react';
 
 import './CardRobot.scss'
 import { IRobot } from '../../../store/race/interfaces';
+import RobotPlace from './RobotPlace';
+import RobotSerial from './RobotSerial';
+import RobotLaps from './RobotLaps';
+import RobotTime from './RobotTime';
 
 
 export interface IAppProps {
@@ -13,11 +17,11 @@ export class CardRobot extends React.Component<IAppProps> {
     const { robot } = this.props;
     return (
       <div className="card-robot race-table-row" >
-        <div className="race-table-cell num"># {robot.num}</div>
-        <div className="race-table-cell serial">{robot.serial}</div>
-        <div className="race-table-cell place">{robot.place}</div>
-        <div className="race-table-cell laps">{robot.laps}</div>
-        <div className="race-table-cell time">{robot.time}</div>
+        <RobotPlace place={robot.place} />
+        {/* <div className="race-table-cell num"># {robot.num}</div> */}
+        <RobotSerial robot={robot} />
+        <RobotLaps laps={robot.laps} />
+        <RobotTime time={robot.time} />
       </div>
     );
   }

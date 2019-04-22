@@ -4,7 +4,7 @@ interface IAppProps {
 }
 
 const RaceState: FunctionComponent<IAppProps> = (props) => {
-    return <div>123123</div>;
+    return <div>RACESTATE</div>;
 };
 
 export default RaceState;

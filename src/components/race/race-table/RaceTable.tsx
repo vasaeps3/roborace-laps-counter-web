@@ -13,24 +13,20 @@ interface IAppProps {
 
 const RaceTable: FunctionComponent<IAppProps> = (props) => {
   const { robots } = props;
-
-  const comparator = cmp().map(r => r.place).desc();
-
+  const comparator = cmp().map(r => r.place).asc();
   const robotsCards = (robots.sort(comparator).map(robot => (
     <CardRobot key={robot.serial} robot={robot} />
-  )))
-
-  console.log('render');
+  )));
 
   return (
     <div className="race-table">
       <div className="race-table-header">
         <div className="race-table-row">
-          <div className="race-table-cell num">robot.num</div>
-          <div className="race-table-cell serial">robot.serial</div>
-          <div className="race-table-cell place">robot.place</div>
-          <div className="race-table-cell laps">robot.laps</div>
-          <div className="race-table-cell time">robot.time</div>
+          <div className="race-table-cell place">Place</div>
+          {/* <div className="race-table-cell num">robot.num</div> */}
+          <div className="race-table-cell serial">Serial</div>
+          <div className="race-table-cell laps">Laps</div>
+          <div className="race-table-cell time">Time</div>
         </div>
       </div>
       <FlipMove className="race-table-body">

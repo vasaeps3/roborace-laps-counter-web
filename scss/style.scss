@@ -11,7 +11,8 @@
 }
 .ant-layout-content {
   .main-container {
-    height: calc(100vh - 64px - 69px);
+    min-height: calc(100vh - 64px - 69px);
+    height: 100%;
     padding: 20px;
     background: #ffffff;
   }
