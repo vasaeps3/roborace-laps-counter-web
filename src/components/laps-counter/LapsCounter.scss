@@ -1,4 +1,15 @@
 $border: 1px solid #eeeeee;
+.laps-counter {
+  &-info {
+    margin-bottom: 2rem;
+    display: flex;
+    text-transform: uppercase;
+    .title {
+      margin-right: 1rem;
+    }
+    .value {}
+  }
+}
 .race-table {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 10px;

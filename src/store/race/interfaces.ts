@@ -38,7 +38,7 @@ export interface IRobot {
 }
 
 export interface IRaceState {
-  status: RaceStatus;
+  status: RaceStatus | null;
   robots: IRobot[];
   time: number;
 }

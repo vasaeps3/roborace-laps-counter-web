@@ -5,7 +5,7 @@ import { RaceStatus, IRaceState } from "./interfaces";
 
 
 const INITIAL_STATE = {
-  status: RaceStatus.READY,
+  status: null,
   robots: [],
   time: 0,
 }

@@ -1,10 +1,21 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { IRaceState } from '../../../store/race/interfaces';
+
 
 interface IAppProps {
+  status: IRaceState['status'];
 }
 
 const RaceState: FunctionComponent<IAppProps> = (props) => {
-    return <div>RACESTATE</div>;
+  return (
+    <div className="laps-counter-info">
+      <div className="title">State:</div>
+      <div className="value">{props.status || 'NOT CONNECTED'}</div>
+    </div>
+  );
 };
 
-export default RaceState;
+
+const mapStateToProps = (state: any) => ({ status: state.race.status });
+export default connect(mapStateToProps)(RaceState);
