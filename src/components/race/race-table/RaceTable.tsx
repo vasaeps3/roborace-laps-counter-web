@@ -18,6 +18,16 @@ const RaceTable: FunctionComponent<IAppProps> = (props) => {
     <CardRobot key={robot.serial} robot={robot} />
   )));
 
+  let tableBody = (
+    <FlipMove className="race-table-body">
+      {robotsCards}
+    </FlipMove>
+  );
+
+  if (!robotsCards.length) {
+    tableBody = <div className="race-table-body race-table-empty"><div></div></div>
+  }
+
   return (
     <div className="race-table">
       <div className="race-table-header">
@@ -29,9 +39,7 @@ const RaceTable: FunctionComponent<IAppProps> = (props) => {
           <div className="race-table-cell time">Time</div>
         </div>
       </div>
-      <FlipMove className="race-table-body">
-        {robotsCards}
-      </FlipMove>
+      {tableBody}
     </div >
   );
 };

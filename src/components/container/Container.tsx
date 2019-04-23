@@ -7,8 +7,8 @@ export interface IContainer {
 export function Container(props: PropsWithChildren<IContainer>) {
   const divStyle = {
     width: '100 %',
-    'margin-right': 'auto',
-    'margin-left': 'auto',
+    'marginRight': 'auto',
+    'marginLeft': 'auto',
   };
 
   if (!!props.gutter) {

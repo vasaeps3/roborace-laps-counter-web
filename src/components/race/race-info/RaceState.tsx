@@ -1,5 +1,5 @@
 import React, { FunctionComponent, Fragment } from 'react';
-import { connect } from 'react-redux';
+
 import { IRaceState } from '../../../store/race/interfaces';
 
 
@@ -16,6 +16,4 @@ const RaceState: FunctionComponent<IAppProps> = (props) => {
   );
 };
 
-
-const mapStateToProps = (state: any) => ({ status: state.race.status });
-export default connect(mapStateToProps)(RaceState);
+export default RaceState;
