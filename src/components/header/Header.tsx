@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Layout, Button } from 'antd';
-import { connect } from 'react-redux';
-import { submit } from 'redux-form';
+import Title from 'antd/lib/typography/Title';
 
-import Logo from '../logo/Logo';
+import Logo from './Logo';
 import HeaderModal from './HeaderModal';
 
 
@@ -27,8 +26,9 @@ class Header extends React.Component<IAppProps, IAppState> {
   public render() {
     return (
       <Layout.Header>
-        <div className="h100 ant-row-flex ant-row-flex-middle ant-row-flex-space-between">
+        <div className="h100 ant-row-flex ant-row-flex-middle">
           <Logo />
+          <Title level={1}>Roborace Laps Counter</Title>
           <Button
             icon="setting"
             shape="circle"

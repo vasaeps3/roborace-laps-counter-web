@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 
-import Socket, { CONNECT, DISCONNECT, CONNECT_ERR, RECONNECT_ERR } from "./Socket";
+import Socket from "./Socket";
 import { setRaceState as setRaceStatus, setRaceTime, setRobot } from "../race/actions";
 import { SocketStatus } from "./interfaces";
 import { SocketMessage, MessageType } from "../race/interfaces";
@@ -19,12 +19,19 @@ export const disconnectSocket = () => (dispatch: Dispatch, getState: Function, {
 export const connectSocket = (wsURL: string) => (dispatch: Dispatch, getState: Function, { socket }: { socket: Socket }) => {
   socket.disconnect();
   const socketIOClient = socket.connect(wsURL);
+
   dispatch({ type: SOCKET_STATE_CHANGED, payload: { wsURL, status: SocketStatus.Connecting, isError: false } });
-  socketIOClient.on(CONNECT, () => onConnected(dispatch));
-  socketIOClient.on(DISCONNECT, () => onDisconnect(dispatch));
-  socketIOClient.on(CONNECT_ERR, () => onError(dispatch));
-  socketIOClient.on(RECONNECT_ERR, () => onError(dispatch));
-  socketIOClient.on('message', (message: SocketMessage) => onMessage(message, dispatch));
+  socketIOClient.onopen = () => {
+    socketIOClient.send(JSON.stringify({ type: 'LAPS' }));
+    onConnected(dispatch)
+  };
+
+  socketIOClient.onerror = () => onError(dispatch);
+  socketIOClient.onclose = () => onDisconnect(dispatch);
+  socketIOClient.onmessage = (messageEvent: MessageEvent) => {
+    const message: SocketMessage = JSON.parse(messageEvent.data);
+    return onMessage(message, dispatch)
+  };
 }
 
 const onMessage = (message: SocketMessage, dispatch: Dispatch) => {

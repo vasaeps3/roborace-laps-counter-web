@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 
+import './RaceInfo.scss';
 import RaceTime from './RaceTime';
 import RaceState from './RaceState';
 import { Container } from '../../container/Container';
@@ -20,7 +21,7 @@ class RaceInfo extends Component<IRaceInfoProps, IRaceInfoState> {
 
   public render() {
     return (
-      <Container gutter={32}>
+      <Container gutter={32} >
         <Row gutter={32}>
           <Col sm={24} md={12}>
             <RaceState status={this.props.race.status} />

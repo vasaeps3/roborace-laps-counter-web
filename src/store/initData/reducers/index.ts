@@ -1,6 +1,6 @@
 import { LOAD_INITDATA_WS } from "../actions";
 
-const initialValue = { wsForm: { wsUrl: 'http://localhost:8000' } };
+const initialValue = { wsForm: { wsUrl: 'ws://smarthata.org:8888' } };
 
 const initDataReducer = (state = initialValue, action) => {
   switch (action.type) {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Title from 'antd/lib/typography/Title';
 
 import './LapsCounter.scss';
 import RaceTable from '../race/race-table/RaceTable';
@@ -13,7 +12,6 @@ export default class LapsCounter extends React.Component<IAppProps, IAppState> {
   public render() {
     return (
       <div className="laps-counter">
-        <Title level={1}>Roborace Laps Counter</Title>
         <RaceInfo />
         <RaceTable />
       </div>

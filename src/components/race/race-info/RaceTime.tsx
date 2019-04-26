@@ -5,7 +5,12 @@ import { IRaceState, RaceStatus } from '../../../store/race/interfaces';
 import { ISocketState } from '../../../store/socket/interfaces';
 
 
-const MsToTime = (props: { time: number }) => (<div>Rice Time: {msToTime(props.time)}</div>)
+const MsToTime = (props: { time: number }) => (
+  <Fragment>
+    <div className="title">Rice Time:</div>
+    <div className="value">{msToTime(props.time)}</div>
+  </Fragment>
+)
 
 
 interface IRaceTimeProps {
@@ -22,7 +27,7 @@ class RaceTime extends PureComponent<IRaceTimeProps>{
     }
 
     return (
-      <div className="race-time">
+      <div className="laps-counter-time">
         {layuot}
       </div>
     );

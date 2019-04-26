@@ -9,7 +9,9 @@ interface RobotLapsProps {
 
 const RobotLaps: FunctionComponent<RobotLapsProps> = (props) => {
   return (
-    <div className="race-table-cell laps">{props.laps}</div>
+    <div className="race-table-cell laps">
+      <span className="mobile-view">Laps:&nbsp;</span><span>{props.laps}</span>
+    </div>
   );
 };
 

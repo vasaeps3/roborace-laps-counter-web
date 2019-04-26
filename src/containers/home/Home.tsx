@@ -1,21 +1,20 @@
 import React from 'react';
 import { Layout } from 'antd';
 
+import './Home.scss';
 import Header from '../../components/header/Header';
 import LapsCounter from '../../components/laps-counter/LapsCounter';
 
 
 export interface IHomeProps { }
-
 export interface IHomeState { }
 
 class Home extends React.Component<IHomeProps, IHomeState> {
-
   public render() {
     return (
       <Layout className="layout">
         <Header />
-        <Layout.Content style={{ padding: '0 50px' }}>
+        <Layout.Content>
           <div className="main-container">
             <LapsCounter />
           </div>

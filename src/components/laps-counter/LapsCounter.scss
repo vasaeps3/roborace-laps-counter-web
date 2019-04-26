@@ -1,19 +1,10 @@
 $border: 1px solid #eeeeee;
-.laps-counter {
-  &-info {
-    margin-bottom: 2rem;
-    display: flex;
-    text-transform: uppercase;
-    .title {
-      margin-right: 1rem;
-    }
-    .value {}
-  }
-}
+
 .race-table {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   border: $border;
+  width: 100%;
   .race-table-body,
   .race-table-header {
     display: flex;
@@ -84,5 +75,46 @@ $border: 1px solid #eeeeee;
         border-bottom: none;
       }
     }
+  }
+}
+@media screen and (max-width: 900px) {
+  .race-table {
+    .race-table-header {
+      display: none;
+    }
+    .race-table-body {
+      .race-table-row {
+        .race-table-cell {
+          border-right: none;
+          &.place{
+            padding: 0.5rem;
+            min-width: 70px;
+            width: 70px;
+            flex: 0 1 auto;
+          }
+          &.laps{
+            flex: 0 1 auto;
+          }
+          &.serial{
+            flex: 1 1 calc(100% - 70px);
+            width: 285px;
+            min-width: 285px;
+          }
+        }
+      }
+    }
+    .card-robot {
+      flex-wrap: wrap;
+    }
+  }
+  .beta {
+    display: none;
+  }
+}
+@media screen and (max-width: 575px) {
+  .race-table {
+    margin: 0 -10px;
+    width: auto;
+    border-radius: 0;
   }
 }

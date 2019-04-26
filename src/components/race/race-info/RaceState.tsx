@@ -10,7 +10,7 @@ interface IAppProps {
 const RaceState: FunctionComponent<IAppProps> = (props) => {
   return (
     <div className="laps-counter-info">
-      <div className="title">State:</div>
+      <div className="title">Race state:</div>
       <div className="value">{props.status || 'NOT CONNECTED'}</div>
     </div>
   );
