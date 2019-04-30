@@ -19,9 +19,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
             <LapsCounter />
           </div>
         </Layout.Content>
-        <Layout.Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED23
-      </Layout.Footer>
+        <Layout.Footer style={{ textAlign: 'center' }}>vasaeps3</Layout.Footer>
       </Layout>
     );
   }

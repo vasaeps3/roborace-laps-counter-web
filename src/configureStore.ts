@@ -2,7 +2,6 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import monitorReducersEnhancer from './enhancers/monitorReducers';
 import rootReducer from './store/reducers';
 import Socket from './store/socket/Socket';
 
