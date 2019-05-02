@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 import './App.scss';
-import Home from './containers/home/Home';
+import Dashboard from './components/layout/dashboard/Dashboard';
 
 
 export interface IAppProps { }
@@ -11,7 +11,7 @@ export interface IAppState { }
 class App extends Component<IAppProps, IAppState> {
   render() {
     return (
-      <Home />
+      <Dashboard />
     );
   }
 }

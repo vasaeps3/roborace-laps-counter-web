@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './CardRobot.scss'
-import { IRobot } from '../../../store/race/interfaces';
+import { IRobot } from '../../../../store/race/interfaces';
 import RobotPlace from './RobotPlace';
 import RobotSerial from './RobotSerial';
 import RobotLaps from './RobotLaps';

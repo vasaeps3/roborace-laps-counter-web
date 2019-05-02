@@ -1,8 +1,9 @@
 import React, { Component, Fragment, PureComponent } from 'react';
 
-import { msToTime } from '../../../utils';
-import { IRaceState, RaceStatus } from '../../../store/race/interfaces';
-import { ISocketState } from '../../../store/socket/interfaces';
+import { msToTime } from '../../../../utils';
+import { ISocketState } from '../../../../store/socket/interfaces';
+import { RaceStatus, IRaceState } from '../../../../store/race/interfaces';
+
 
 
 const MsToTime = (props: { time: number }) => (

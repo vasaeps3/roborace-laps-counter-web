@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { msToTime } from '../../../utils';
-import { IRobot } from '../../../store/race/interfaces';
+import { msToTime } from '../../../../utils';
+import { IRobot } from '../../../../store/race/interfaces';
 
 
 interface RobotTimeProps {

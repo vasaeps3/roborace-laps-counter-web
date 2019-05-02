@@ -1,15 +1,15 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import './Home.scss';
-import Header from '../../components/header/Header';
-import LapsCounter from '../../components/laps-counter/LapsCounter';
+import './Dashboard.scss';
+import Header from '../../common/header/Header';
+import LapsCounter from '../../../containers/laps-counter/LapsCounter';
 
 
 export interface IHomeProps { }
 export interface IHomeState { }
 
-class Home extends React.Component<IHomeProps, IHomeState> {
+class Dashboard extends React.Component<IHomeProps, IHomeState> {
   public render() {
     return (
       <Layout className="layout">
@@ -25,4 +25,4 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 }
 
-export default Home;
+export default Dashboard;

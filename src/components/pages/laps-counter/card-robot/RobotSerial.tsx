@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { IRobot } from '../../../store/race/interfaces';
+import { IRobot } from '../../../../store/race/interfaces';
 
 
 interface RobotSerialProps {
   robot: IRobot;
 }
+
 const RobotSerial: React.FunctionComponent<RobotSerialProps> = (props) => {
   const { robot } = props;
   return (

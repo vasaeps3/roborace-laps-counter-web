@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
-import { SocketStatus } from '../../store/socket/interfaces';
+import { SocketStatus } from '../../../store/socket/interfaces';
 
 
 class WsFormWrap extends Component<any, any> {

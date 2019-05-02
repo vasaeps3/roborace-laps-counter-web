@@ -3,8 +3,8 @@ import FlipMove from 'react-flip-move';
 import { connect } from 'react-redux';
 import { cmp } from 'type-comparator';
 
+import { IRobot } from '../../../../store/race/interfaces';
 import { CardRobot } from '../card-robot/CardRobot';
-import { IRobot } from '../../../store/race/interfaces';
 
 
 interface IAppProps {
@@ -14,9 +14,11 @@ interface IAppProps {
 const RaceTable: FunctionComponent<IAppProps> = (props) => {
   const { robots } = props;
   const comparator = cmp().map(r => r.place).asc();
-  const robotsCards = (robots.sort(comparator).map(robot => (
-    <CardRobot key={robot.serial} robot={robot} />
-  )));
+
+  const robotsCards = (robots.sort(comparator)
+    .map(robot => (
+      <CardRobot key={robot.serial} robot={robot} />
+    )));
 
   let tableBody = (
     <FlipMove className="race-table-body">
@@ -33,7 +35,6 @@ const RaceTable: FunctionComponent<IAppProps> = (props) => {
       <div className="race-table-header">
         <div className="race-table-row">
           <div className="race-table-cell place">Place</div>
-          {/* <div className="race-table-cell num">robot.num</div> */}
           <div className="race-table-cell serial">Serial</div>
           <div className="race-table-cell laps">Laps</div>
           <div className="race-table-cell time">Time</div>
@@ -44,11 +45,10 @@ const RaceTable: FunctionComponent<IAppProps> = (props) => {
   );
 };
 
+export default RaceTable;
 
-const mapStateToProps = (state: any) => ({ robots: state.race.robots });
+// const mapStateToProps = (state: any) => ({ robots: state.race.robots });
 
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps,
-)(RaceTable)
-// export default RaceTable;
+// export default connect(
+//   mapStateToProps,
+// )(RaceTable)

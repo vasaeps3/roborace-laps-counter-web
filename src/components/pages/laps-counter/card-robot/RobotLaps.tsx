@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { IRobot } from '../../../store/race/interfaces';
+import { IRobot } from '../../../../store/race/interfaces';
 
 
 interface RobotLapsProps {

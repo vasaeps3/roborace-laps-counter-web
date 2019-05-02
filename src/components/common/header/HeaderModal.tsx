@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Modal, Button } from 'antd';
 import { connect } from 'react-redux';
 
-import WsContainer from '../ws/WsContainer';
-import { submitWS } from '../../store/initData/actions';
-import { disconnectSocket, connectSocket } from '../../store/socket/actions';
-import { ISocketState, SocketStatus } from '../../store/socket/interfaces';
+import WsContainer from '../../../containers/forms/ws/WsContainer';
+import { submitWS } from '../../../store/initData/actions';
+import { SocketStatus, ISocketState } from '../../../store/socket/interfaces';
+import { connectSocket, disconnectSocket } from '../../../store/socket/actions';
 
 
 export interface IAppProps extends IStateToProps, IDispatchToProps {

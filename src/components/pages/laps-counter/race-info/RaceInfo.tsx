@@ -5,9 +5,9 @@ import { Row, Col } from 'antd';
 import './RaceInfo.scss';
 import RaceTime from './RaceTime';
 import RaceState from './RaceState';
-import { Container } from '../../container/Container';
-import { ISocketState } from '../../../store/socket/interfaces';
-import { IRaceState } from '../../../store/race/interfaces';
+import { ISocketState } from '../../../../store/socket/interfaces';
+import { IRaceState } from '../../../../store/race/interfaces';
+import { Container } from '../../../common/container/Container';
 
 
 export interface IRaceInfoProps {
@@ -17,7 +17,7 @@ export interface IRaceInfoProps {
 
 export interface IRaceInfoState { }
 
-class RaceInfo extends Component<IRaceInfoProps, IRaceInfoState> {
+export default class RaceInfo extends Component<IRaceInfoProps, IRaceInfoState> {
 
   public render() {
     return (
@@ -34,6 +34,3 @@ class RaceInfo extends Component<IRaceInfoProps, IRaceInfoState> {
     );
   }
 }
-
-const mapStateToProps = (state: any) => ({ socketState: state.socketState, race: state.race });
-export default connect(mapStateToProps)(RaceInfo);

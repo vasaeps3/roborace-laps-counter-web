@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Fragment } from 'react';
 
-import { IRaceState } from '../../../store/race/interfaces';
+import { IRaceState } from '../../../../store/race/interfaces';
 
 
 interface IAppProps {
