@@ -1,21 +1,16 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { IRobot } from '../../../../store/race/interfaces';
 
 
-interface RobotSerialProps {
-  robot: IRobot;
+interface RobotLapsProps {
+  serial: IRobot['serial'];
 }
 
-const RobotSerial: React.FunctionComponent<RobotSerialProps> = (props) => {
-  const { robot } = props;
+const RobotSerial: FunctionComponent<RobotLapsProps> = (props) => {
   return (
     <div className="race-table-cell serial">
-      <div className="robot-serial">
-        <div>
-          {robot.serial}
-        </div>
-      </div>
+      <span className="mobile-view">Serial:&nbsp;</span><span>{props.serial}</span>
     </div>
   );
 };

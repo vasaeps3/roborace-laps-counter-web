@@ -35,6 +35,7 @@ const RaceTable: FunctionComponent<IAppProps> = (props) => {
       <div className="race-table-header">
         <div className="race-table-row">
           <div className="race-table-cell place">Place</div>
+          <div className="race-table-cell name">Team/Robot</div>
           <div className="race-table-cell serial">Serial</div>
           <div className="race-table-cell laps">Laps</div>
           <div className="race-table-cell time">Time</div>

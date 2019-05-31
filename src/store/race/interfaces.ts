@@ -35,6 +35,7 @@ export interface IRobot {
   laps: number;
   time: number;
   place: number;
+  name: string;
 }
 
 export interface IRaceState {

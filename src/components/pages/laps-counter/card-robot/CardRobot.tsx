@@ -1,25 +1,26 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 
 import './CardRobot.scss'
 import { IRobot } from '../../../../store/race/interfaces';
 import RobotPlace from './RobotPlace';
-import RobotSerial from './RobotSerial';
+import RobotName from './RobotName';
 import RobotLaps from './RobotLaps';
 import RobotTime from './RobotTime';
+import RobotSerial from './RobotSerial';
 
 
 export interface IAppProps {
   robot: IRobot;
 }
 
-export class CardRobot extends React.Component<IAppProps> {
+export class CardRobot extends Component<IAppProps> {
   render() {
     const { robot } = this.props;
     return (
       <div className="card-robot race-table-row" >
         <RobotPlace place={robot.place} />
-        {/* <div className="race-table-cell num"># {robot.num}</div> */}
-        <RobotSerial robot={robot} />
+        <RobotName robot={robot} />
+        <RobotSerial serial={robot.serial} />
         <RobotLaps laps={robot.laps} />
         <RobotTime time={robot.time} />
       </div>

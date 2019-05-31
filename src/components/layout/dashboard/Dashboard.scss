@@ -20,7 +20,17 @@
     background: #ffffff;
   }
 }
-
+.ant-layout-footer {
+  nav {
+    a {
+      display: inline-block;
+      padding: 0 1rem;
+      &.active{
+        color: red;
+      }
+    }
+  }
+}
 .layout {
   min-height: 100vh;
 }

@@ -19,7 +19,7 @@ $border: 1px solid #eeeeee;
       .race-table-cell {
         box-sizing: border-box;
         flex-grow: 1;
-        padding: 0.8rem 1.2rem;
+        padding: 0.8rem .5rem;
         border-right: $border;
         &:last-child {
           border-right: none;
@@ -29,9 +29,13 @@ $border: 1px solid #eeeeee;
           max-width: 150px;
           background: green;
         }
-        &.serial {
+        &.name {
           width: 360px;
-          min-width: 360px;
+          min-width: 330px;
+        }
+        &.serial {
+          width: 80px;
+          min-width: 75px;
         }
         &.place {
           min-width: 110px;
@@ -39,14 +43,14 @@ $border: 1px solid #eeeeee;
           max-width: 120px;
         }
         &.laps {
-          min-width: 50px;
+          min-width: 65px;
           width: 100px;
           max-width: 100px;
         }
         &.time {
           width: 20%;
           max-width: 300px;
-          min-width: 230px;
+          min-width: 180px;
         }
       }
     }
@@ -86,19 +90,25 @@ $border: 1px solid #eeeeee;
       .race-table-row {
         .race-table-cell {
           border-right: none;
-          &.place{
+          &.place {
             padding: 0.5rem;
             min-width: 70px;
             width: 70px;
             flex: 0 1 auto;
           }
-          &.laps{
+          &.laps {
             flex: 0 1 auto;
           }
-          &.serial{
+          &.name {
             flex: 1 1 calc(100% - 70px);
             width: 285px;
             min-width: 285px;
+          }
+          &.serial {
+            flex: 1 1 calc(100% - 70px);
+            width: 285px;
+            min-width: 285px;
+            justify-content: flex-start;
           }
         }
       }

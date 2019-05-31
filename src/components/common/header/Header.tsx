@@ -18,6 +18,7 @@ class Header extends React.Component<IAppProps, IAppState> {
   }
 
   private onModalToggle = (visible: boolean): void => {
+
     this.setState({
       visible,
     })
