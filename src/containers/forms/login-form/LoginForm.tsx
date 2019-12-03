@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import { Form, Input, Icon, Button } from 'antd';
+import React, { Component } from "react";
+import { Form, Input, Icon, Button } from "antd";
+import { withRouter } from "react-router-dom";
 
-import { InputWrapper } from '../../../components/common/input-wrapper/InputWrapper';
-import { hashCode } from '../../../utils';
+import { InputWrapper } from "../../../components/common/input-wrapper/InputWrapper";
+import { hashCode } from "../../../utils";
 
-
-export interface IAppProps { }
+export interface IAppProps {}
 
 class LoginForm extends Component<any, any> {
-
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log(err);
       if (!err) {
-        console.log('Received values of form: ', values);
+        localStorage.setItem("pass", "" + hashCode(values.password));
+        this.props.history.push("/");
       }
     });
-  }
+  };
 
   public render() {
     const validator = (rule, value, callback) => {
@@ -25,9 +24,13 @@ class LoginForm extends Component<any, any> {
         callback();
         return;
       }
-      console.log(hashCode(value));
-      callback('Wrong password');
-    }
+      const truePassword = "-544719056";
+      if ("" + hashCode(value) !== truePassword) {
+        callback("Wrong password");
+      }
+
+      return true;
+    };
     return (
       <Form layout="inline" onSubmit={this.handleSubmit}>
         <InputWrapper
@@ -35,17 +38,18 @@ class LoginForm extends Component<any, any> {
           id="password"
           type="password"
           iconType="lock"
-          rules={[{
-            required: true,
-            message: 'Please input your password!',
-          },
-          {
-            validator
-          }]} />
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!"
+            },
+            {
+              validator
+            }
+          ]}
+        />
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit">
+          <Button type="primary" htmlType="submit">
             Log in
           </Button>
         </Form.Item>
@@ -54,4 +58,4 @@ class LoginForm extends Component<any, any> {
   }
 }
 
-export default Form.create({ name: 'login_form' })(LoginForm);
+export default Form.create({ name: "login_form" })(withRouter(LoginForm));

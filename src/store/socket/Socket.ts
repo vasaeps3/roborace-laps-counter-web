@@ -1,10 +1,10 @@
 export default class Socket {
   private socket!: WebSocket;
 
-  constructor() { }
+  constructor() {}
 
   connect = (wsURL: string): WebSocket => {
-    this.socket = new WebSocket(wsURL)
+    this.socket = new WebSocket(wsURL);
     return this.socket;
   };
 
@@ -13,7 +13,10 @@ export default class Socket {
       return;
     }
 
-    this.socket.close()
+    this.socket.close();
   };
 
+  send = (data: string | ArrayBufferLike | Blob | ArrayBufferView) => {
+    this.socket.send(data);
+  };
 }

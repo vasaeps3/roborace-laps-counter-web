@@ -23,6 +23,14 @@ export const disconnectSocket = () => (
   socket.disconnect();
 };
 
+export const sendMessage = data => (
+  dispatch: Dispatch,
+  getState: Function,
+  { socket }: { socket: Socket }
+) => {
+  socket.send(JSON.stringify(data));
+};
+
 export const connectSocket = (wsURL: string) => (
   dispatch: Dispatch,
   getState: Function,
