@@ -1,14 +1,15 @@
 export enum RaceStatus {
-  READY = 'READY',
-  STEADY = 'STEADY',
-  RUNNING = 'RUNNING',
-  FINISH = 'FINISH',
+  READY = "READY",
+  STEADY = "STEADY",
+  RUNNING = "RUNNING",
+  FINISH = "FINISH"
 }
 
 export enum MessageType {
-  STATE = 'STATE',
-  LAP = 'LAP',
-  TIME = 'TIME',
+  STATE = "STATE",
+  LAP = "LAP",
+  TIME = "TIME",
+  ROBOT_REMOVE = "ROBOT_REMOVE"
 }
 
 interface BaseSocketMessage {
@@ -16,8 +17,8 @@ interface BaseSocketMessage {
 }
 
 export interface StateSocketMessage extends BaseSocketMessage {
-  type: MessageType.STATE,
-  state: RaceStatus,
+  type: MessageType.STATE;
+  state: RaceStatus;
 }
 
 export interface LapSocketMessage extends BaseSocketMessage, IRobot {
@@ -27,6 +28,11 @@ export interface LapSocketMessage extends BaseSocketMessage, IRobot {
 export interface TimeSocketMessage extends BaseSocketMessage {
   type: MessageType.TIME;
   time: number;
+}
+
+export interface RemoveSocketMessage extends BaseSocketMessage {
+  type: MessageType.ROBOT_REMOVE;
+  serial: number;
 }
 
 export interface IRobot {
@@ -44,4 +50,8 @@ export interface IRaceState {
   time: number;
 }
 
-export type SocketMessage = StateSocketMessage | LapSocketMessage | TimeSocketMessage;
+export type SocketMessage =
+  | StateSocketMessage
+  | LapSocketMessage
+  | TimeSocketMessage
+  | RemoveSocketMessage;
