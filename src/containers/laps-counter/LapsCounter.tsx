@@ -24,7 +24,11 @@ class LapsCounter extends React.Component<IAppProps, IAppState> {
   }
 
   enterLoading = () => {
-    const serial = Math.max(...this.props.race.robots.map(r => r.serial)) + 1;
+    let serial = 100;
+    if (this.props.race.robots.length) {
+      serial = Math.max(...this.props.race.robots.map(r => r.serial)) + 1;
+    }
+
     this.props.sendMessage({
       serial,
       name: `New ${serial}`,
