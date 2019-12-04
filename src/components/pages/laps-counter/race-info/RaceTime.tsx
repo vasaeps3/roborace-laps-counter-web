@@ -6,7 +6,7 @@ import { RaceStatus, IRaceState } from "../../../../store/race/interfaces";
 
 const MsToTime = (props: { time: number }) => (
   <Fragment>
-    <div className="title">Rice Time:</div>
+    <div className="title">Race Time:</div>
     <div className="value">{msToTime(props.time)}</div>
   </Fragment>
 );
