@@ -16,7 +16,6 @@ interface RobotSerialProps {
 class RobotName extends PureComponent<RobotSerialProps, any> {
   public render() {
     const { robot, isAdmin } = this.props as any;
-    console.log(this.props);
 
     const content = isAdmin ? (
       <RobotNameAdminForm robot={robot} />
@@ -44,6 +43,13 @@ const RobotNameUser: FunctionComponent<RobotSerialProps> = props => {
 };
 
 class RobotNameAdmin extends PureComponent<any> {
+  removeRobot = () => {
+    this.props.sendMessage({
+      serial: this.props.robot.serial,
+      type: "ROBOT_REMOVE"
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -56,33 +62,39 @@ class RobotNameAdmin extends PureComponent<any> {
       }
     });
   };
+
   public render() {
     const { getFieldsError } = this.props.form;
 
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
-        <InputWrapper
-          form={this.props.form}
-          id="name"
-          type="name"
-          iconType="copy"
-          rules={[
-            {
-              required: true,
-              message: "Please enter name"
-            }
-          ]}
-        />
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            disabled={hasErrors(getFieldsError())}
-          >
-            save
-          </Button>
-        </Form.Item>
-      </Form>
+      <div>
+        <Form layout="inline" onSubmit={this.handleSubmit}>
+          <InputWrapper
+            form={this.props.form}
+            id="name"
+            type="name"
+            iconType="copy"
+            rules={[
+              {
+                required: true,
+                message: "Please enter name"
+              }
+            ]}
+          />
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              disabled={hasErrors(getFieldsError())}
+            >
+              save
+            </Button>
+          </Form.Item>
+        </Form>
+        <Button type="danger" onClick={this.removeRobot}>
+          remove
+        </Button>
+      </div>
     );
   }
 }
