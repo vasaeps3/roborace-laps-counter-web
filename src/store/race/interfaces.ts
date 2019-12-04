@@ -48,6 +48,7 @@ export interface IRaceState {
   status: RaceStatus | null;
   robots: IRobot[];
   time: number;
+  isAdmin: boolean;
 }
 
 export type SocketMessage =

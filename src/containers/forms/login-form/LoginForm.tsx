@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Form, Input, Icon, Button } from "antd";
 import { withRouter } from "react-router-dom";
 
 import { InputWrapper } from "../../../components/common/input-wrapper/InputWrapper";
 import { hashCode } from "../../../utils";
+import { setIsAdmin } from "../../../store/race/actions";
 
 export interface IAppProps {}
 
@@ -12,7 +14,7 @@ class LoginForm extends Component<any, any> {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        localStorage.setItem("pass", "" + hashCode(values.password));
+        this.props.setIsAdmin(true);
         this.props.history.push("/");
       }
     });
@@ -58,4 +60,9 @@ class LoginForm extends Component<any, any> {
   }
 }
 
-export default Form.create({ name: "login_form" })(withRouter(LoginForm));
+const mapDispatchToProps = {
+  setIsAdmin
+};
+export default Form.create({ name: "login_form" })(
+  connect(null, mapDispatchToProps)(withRouter(LoginForm))
+);

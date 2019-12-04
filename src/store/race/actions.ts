@@ -6,6 +6,7 @@ export const RACE_STATE = "ROBORACE/STATE";
 export const RACE_TIME = "ROBORACE/TIME";
 export const RACE_ROBOT = "ROBORACE/ROBOT";
 export const REMOVE_ROBOT = "ROBORACE/REMOVE_ROBOT";
+export const ADMIN_STATE = "ROBORACE/ADMIN_STATE";
 
 export const setRaceState = (
   status: IRaceState["status"],
@@ -24,4 +25,15 @@ export const setRobot = (robot: IRobot, dispatch: Dispatch) => {
 
 export const removeRobor = (serial: IRobot["serial"], dispatch: Dispatch) => {
   dispatch({ type: REMOVE_ROBOT, serial });
+};
+
+export const setIsAdmin = (isAdmin: boolean) => (dispatch: Dispatch) => {
+  dispatch({ type: ADMIN_STATE, isAdmin });
+};
+
+export const checkAdmin = () => (dispatch: Dispatch) => {
+  const traTaTa = localStorage.getItem("tra-ta-ta");
+  if (traTaTa === "-544719056") {
+    dispatch({ type: ADMIN_STATE, isAdmin: true });
+  }
 };

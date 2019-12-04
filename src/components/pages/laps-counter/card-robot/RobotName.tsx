@@ -14,16 +14,11 @@ interface RobotSerialProps {
   robot: IRobot;
 }
 class RobotName extends PureComponent<RobotSerialProps, any> {
-  state = { isAdmin: false };
-  componentDidMount() {
-    const pass = localStorage.getItem("pass") || "";
-
-    this.setState({ isAdmin: pass === "-544719056" });
-  }
-
   public render() {
-    const { robot } = this.props;
-    const content = this.state.isAdmin ? (
+    const { robot, isAdmin } = this.props as any;
+    console.log(this.props);
+
+    const content = isAdmin ? (
       <RobotNameAdminForm robot={robot} />
     ) : (
       <RobotNameUser robot={robot} />
@@ -33,7 +28,11 @@ class RobotName extends PureComponent<RobotSerialProps, any> {
   }
 }
 
-export default RobotName;
+const mapStateToProps = (state: any) => ({
+  isAdmin: state.race.isAdmin
+});
+
+export default connect(mapStateToProps)(RobotName);
 
 const RobotNameUser: FunctionComponent<RobotSerialProps> = props => {
   const { robot } = props;
@@ -49,7 +48,6 @@ class RobotNameAdmin extends PureComponent<any> {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         this.props.sendMessage({
           name: values.name,
           serial: this.props.robot.serial,
@@ -88,6 +86,7 @@ class RobotNameAdmin extends PureComponent<any> {
     );
   }
 }
+
 const mapDispatchToProps: any = {
   sendMessage
 };

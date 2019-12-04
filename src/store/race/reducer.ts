@@ -1,12 +1,19 @@
 import { Reducer, Action } from "redux";
 
-import { RACE_STATE, RACE_TIME, RACE_ROBOT, REMOVE_ROBOT } from "./actions";
+import {
+  RACE_STATE,
+  RACE_TIME,
+  RACE_ROBOT,
+  REMOVE_ROBOT,
+  ADMIN_STATE
+} from "./actions";
 import { RaceStatus, IRaceState } from "./interfaces";
 
 const INITIAL_STATE = {
   status: null,
   robots: [],
-  time: 0
+  time: 0,
+  isAdmin: false
 };
 
 interface IAction extends Action, IRaceState {}
@@ -51,7 +58,12 @@ const raceReducer: Reducer<IRaceState, IAction> = (
         ...state,
         robots: [...oldRobots]
       };
-
+    case ADMIN_STATE:
+      localStorage.setItem("tra-ta-ta", "-544719056");
+      return {
+        ...state,
+        isAdmin: action.isAdmin
+      };
     default:
       return state;
   }
